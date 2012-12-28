@@ -1,0 +1,15 @@
+There are two steps to install the Ruby PCAN extension:
+
+1. Install the ruby gem. The command 'gem install <pcan gem filename>'
+   will automatically install the gem to your ruby directory.
+
+2. Place the PCAN_USB.dll file in the appropriate directory.
+   Since the installation software that comes with the PCAN device does
+   not seem to automatically place the dll in the correct location,
+   you can either place it in the Windows\System32 directory or you
+   can place it in the same working directory as your Ruby files that
+   require the extension. I went ahead and put it in my System32 directory
+   so that I wouldn't have to worry so much about the location of the
+   library.
+
+   I found the DLL on the PCAN CD in the directory USB\PCAN-Light.

@@ -1,0 +1,12 @@
+Tue May 30 00:15:35 EDT 2006
+crosby
+
+TODO:
+  - Switch default behavior of verify_mocks to force=true
+  - Reconcile differences (if any?) between unit and functional tests for Mock
+    (Right now the nature of the tests is not much different - neither uses much isolation)
+  - Refactor code within Mock, Expector and Trapper - there's dupe code in there
+
+  DONE 
+  | Support expect-and-do behavior
+  | unit tests for Mockery::Trapper

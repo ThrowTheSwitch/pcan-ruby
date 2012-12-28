@@ -1,0 +1,193 @@
+	<html>
+	<head>
+	  <style>
+
+			div.title
+			{
+				width: 600px;
+				font: bold 14pt trebuchet ms;
+			}
+				
+			div.specification 
+			{
+				font: bold 12pt trebuchet ms;
+				border: solid 1px black;
+				width: 600px;
+				padding: 5px;
+				margin: 5px;
+			}
+
+			ul.requirements
+			{
+				font: normal 11pt verdana;
+				padding-left: 0;
+				margin-left: 0;
+				border-bottom: 1px solid gray;
+				width: 600px;
+			}
+
+			ul.requirements li
+			{
+				list-style: none;
+			  margin: 0;
+			  padding: 0.25em;
+			  border-top: 1px solid gray;
+			}
+	  </style>
+	</head>
+	<body>
+	<div class="title">Specifications for pcanusb</div>
+	
+	  <div class="specification">
+		  Pcan Hardware should: 
+			<ul class="requirements">
+			  
+					<li>create class instance with defualt settings</li>
+				
+					<li>create class instance with specified baud rate</li>
+				
+					<li>create class instance with specified baud rate and message id type</li>
+				
+					<li>report version information</li>
+				
+					<li>send CAN message</li>
+				
+					<li>receive CAN message</li>
+				
+					<li>send raise exception when trying to send non-PcanMessage object</li>
+				
+			</ul>
+		</div>
+	
+	  <div class="specification">
+		  Pcan Hardware should: 
+			<ul class="requirements">
+			  
+					<li>create class instance with defualt settings</li>
+				
+					<li>create class instance with specified baud rate</li>
+				
+					<li>create class instance with specified baud rate and message id type</li>
+				
+					<li>report version information</li>
+				
+					<li>send CAN message</li>
+				
+					<li>receive CAN message</li>
+				
+					<li>raise exception when trying to send non-PcanMessage object</li>
+				
+			</ul>
+		</div>
+	
+	  <div class="specification">
+		  Pcan Message Builder should: 
+			<ul class="requirements">
+			  
+					<li>create CAN message object</li>
+				
+					<li>derive from CanMessage</li>
+				
+					<li>create zero length message with all fields initialized to zero as default</li>
+				
+					<li>have method to create custom bit accessors</li>
+				
+					<li>throw exception when trying to define bit before specifying length</li>
+				
+					<li>throw exception when trying to define bit outside of payload bounds</li>
+				
+					<li>not throw exception when bit defined within message payload</li>
+				
+					<li>create custom bit accessor methods</li>
+				
+					<li>get and set bit defined by custom bit definition for bit zero</li>
+				
+					<li>get and set bit defined by custom bit definition for other bits</li>
+				
+					<li>accept 0/1 for bit value but report true/false</li>
+				
+					<li>raise exception upon invalid value being specified for custom bit</li>
+				
+					<li>have method to create custom field accessors</li>
+				
+					<li>throw exception when trying to define field before specifying length</li>
+				
+					<li>throw exception when trying to define field starting outside of payload bounds</li>
+				
+					<li>not throw exception when defining a field starting and ending within payload bounds</li>
+				
+					<li>throw exception when trying to define field starting in message payload but extending beyond</li>
+				
+					<li>create custom field accessor methods</li>
+				
+					<li>get custom field contents from payload appropriately when passed valid index</li>
+				
+					<li>set custom field contents in payload appropriately when passed valid value</li>
+				
+					<li>report field set with custom accessor as assigned</li>
+				
+					<li>support field overlapping byte boundary</li>
+				
+			</ul>
+		</div>
+	
+	  <div class="specification">
+		  Pcan Message should: 
+			<ul class="requirements">
+			  
+					<li>create CAN message object</li>
+				
+					<li>initialize structure elements to zero</li>
+				
+					<li>report CAN ID type</li>
+				
+					<li>set CAN ID type</li>
+				
+					<li>raise exception upon invalid value passed to set_type</li>
+				
+					<li>implement get ID</li>
+				
+					<li>implement set ID</li>
+				
+					<li>return id set with set_id from get_id</li>
+				
+					<li>not raise exception upon valid CAN message ID</li>
+				
+					<li>raise exception upon invalid CAN message ID</li>
+				
+					<li>implement get DATA[]</li>
+				
+					<li>implement set DATA[]</li>
+				
+					<li>raise exception upon invalid message data type (non-array) passed to set_data</li>
+				
+					<li>raise exception upon invalid array length being passed to set_data</li>
+				
+					<li>raise exception upon invalid byte value being passed to set_data</li>
+				
+					<li>return data set with set_data from get_data</li>
+				
+					<li>format structure into a string</li>
+				
+					<li>format structure into a string as raw hex byte values</li>
+				
+			</ul>
+		</div>
+	
+	  <div class="specification">
+		  Speed From Vmc New should: 
+			<ul class="requirements">
+			  
+					<li>initialize all values appropriately</li>
+				
+					<li>report formatted message</li>
+				
+					<li>implement data bit field</li>
+				
+					<li>implement dir bit field</li>
+				
+			</ul>
+		</div>
+	
+	</body>
+	</html>

@@ -1,0 +1,22 @@
+Tue May 30 00:13:25 EDT 2006
+crosby
+
+Simple intended end use:
+  create_mocks :car, :dog
+
+  @car.expect.fuel_up(5,:87)
+  @dog.expect.kick(:hard).returns("YELP!")
+  @car.expect.turn_off.raises "Not started"
+
+  verify_mocks
+
+test/functional/
+  Prove that the CMock library works in a testing environment
+
+test/unit/
+  Test the components of CMock in isolation
+
+
+RAILS PLUGIN
+Drop this directory into a Rails app beneath vendor/plugins and there you go.
+init.rb gets CMock into your test environment.

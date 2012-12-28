@@ -1,0 +1,107 @@
+; Pcan_usb.inf
+;
+; Installation file (.inf) for the PCAN-USB device.
+;
+; (c) Copyright 04/2003 PEAK-System Technik GmbH 
+;
+
+[Version]
+Signature="$CHICAGO$"
+Provider=%ProviderName%
+Class= %DeviceClassName%
+ClassGUID={ff646f80-8def-11d2-9449-00105a075f6b}
+DriverVer=03/03/2003,2.42.4.0
+
+
+; ------------------------------------------------------------------------------
+
+[Manufacturer]
+%MfgName%=Mfg0
+
+[Mfg0]
+%Pcanusb.DDI.DeviceDesc%=Pcanusb.DDI.Install, USB\VID_0C72&PID_000C
+
+; 9X Style
+[ClassInstall]
+Addreg=Class_AddReg
+
+; NT Style
+[ClassInstall32]
+Addreg=Class_AddReg
+
+[Class_AddReg]
+HKR,,,,%DeviceClassName%
+HKR,,Icon,,"-20"
+
+; ------------------------------------------------------------------------------
+ 
+[SourceDisksNames]
+1 = %DiskDesc%,,
+
+[SourceDisksFiles]
+pcan_usb.sys = 1
+
+[DestinationDirs]
+Pcanusb.Files.Driver = 10,System32\Drivers
+Pcanusb.Files.Driver.NT = 10,System32\Drivers
+DefaultDestDir = 10,System32\Drivers
+
+[ControlFlags]
+ExcludeFromSelect = USB\VID_0C72&PID_000C
+
+
+; --------- Windows 9X -----------------
+
+[Pcanusb.DDI.Install]
+CopyFiles=Pcanusb.Files.Driver
+AddReg=Pcanusb.9X.AddReg
+
+[Pcanusb.9X.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,pcan_usb.sys
+HKR, "Parameters", "BreakOnEntry", 0x00010001, 0
+HKLM,System\CurrentControlSet\Services\pcan_usb,Type,1,1
+HKLM,System\CurrentControlSet\Services\pcan_usb,Net1,0,"TestNet,16,0x001C"
+
+; --------- Windows NT ---------
+
+[Pcanusb.DDI.Install.NT]
+CopyFiles=Pcanusb.Files.Driver.NT
+AddReg=Pcanusb.NTx86.AddReg
+
+[Pcanusb.DDI.Install.NT.Services]
+Addservice = pcan_usb,0x00000002,Pcanusb.AddService
+
+[Pcanusb.AddService]
+DisplayName    = %SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+LoadOrderGroup = Extended Base
+ServiceBinary  = %10%\System32\Drivers\pcan_usb.sys
+
+[Pcanusb.NTx86.AddReg]
+HKLM, "System\CurrentControlSet\Services\pcan_usb\Parameters",\
+	"BreakOnEntry", 0x00010001, 0
+HKLM,System\CurrentControlSet\Services\pcan_usb,Type,1,1
+HKLM,System\CurrentControlSet\Services\pcan_usb,Net1,0,"TestNet,16,0x001C"
+
+
+
+; --------- Files -------------
+
+[Pcanusb.Files.Driver]
+pcan_usb.sys,,,34
+
+[Pcanusb.Files.Driver.NT]
+pcan_usb.sys,,,34
+
+;--------- Strings Section ---------------------------------------------------
+
+[Strings]
+ProviderName="PEAK-System Technik GmbH"
+MfgName="PEAK-System Technik GmbH"
+Pcanusb.DDI.DeviceDesc="PCAN-USB Device"
+DeviceClassName="CAN-USB-Hardware"
+SvcDesc="PCAN-USB Device Driver"
+DiskDesc="PCAN-USB Installation Disk"

@@ -1,0 +1,85 @@
+------------------------------------------------------------------------
+
+PCAN-USB Adapter
+18.03.2003
+
+------------------------------------------------------------------------
+Information:
+
+
+The  PEAK-CAN-USB is a USB to CAN Converter, which allows 
+to connect a CAN-Bus to a USB Connector of a PC.
+The supplied Program CANVIEW and PCAN-View give you easy and fast access the CAN-World.
+
+The company PEAK-System offers the profesionell Windows VxD/sys drivers
+peakcan.vxd/sys and the accompanying canapi2.dll. These Software called PCAN-Developer
+tools allow you real-time communication under Windows with the CAN-USB.
+
+New since 2001 is the PCAN-Light device drivers for Window and the PCAN-View 
+Monitor for Window. This is the small brother of the PCAN-Developer tools.
+
+------------------------------------------------------------------------------
+
+
+                Installation instructions for PEAK-CAN-USB
+
+                                WIN98/ME/2000/XP
+
+   ***********************************************************************
+   ****         Please read before use the CAN-USB                   ****
+   ***********************************************************************
+
+1. Start the PCAN-USB.EXE file on the disk to install the Device Drivers
+   and the PCAN-View Software.
+
+2. Follow the instructions.
+
+3. Use the files in the PCAN-Light directory to build your own applications 
+   with the "PCAN_USB.DLL" Interface DLL
+
+
+4. When the USB is plug in the first time the Windows System found a new Hardware
+   and ask for the USB Driver Disk. Insert the Disk and follow the instructions.
+
+
+Please do NOT remove the PCAN-USB while a application is using the Interface. Always 
+close applications before you remove the hardware.
+
+     !! LED is flashing if a programm is communicate with the hardware !!
+
+*************************************************************************************
+    If you remove the Hardware while a software is communicate with the adaptor 
+            the Windows System can be "hang up" or shows a "blue screen"
+*************************************************************************************
+
+
+                   !!!   Attention  for WIN 2000 and XP   !!!
+
+
+Please do NOT disconnect the USB while the System is running.If you like to 
+disconnect the PCAN-USB please double click the TrayIcon in the Taskbar for 
+removable hardware and close the connention to the PCAN-USB. After the system 
+show you that the PCAN-USB is disconnected you can remove the PCAN-USB from the PC.
+
+
+
+
+
+The PCAN-View Software include a Windows Help File in English.
+Please press F1 while PCAN-View is running.
+
+
+
+If you have any questions concerning the commissioning of the CAN-USB
+or Information about further CAN-Products then please contact:
+
+PEAK-System Technik GmbH
+Otto-Roehm-Str. 69
+D-64293 Darmstadt
+Germany
+
+Tel. +49 6151 / 8173-20
+FAX  +49 6151 / 8173-29
+
+info@peak-system.com
+http://www.peak-system.com

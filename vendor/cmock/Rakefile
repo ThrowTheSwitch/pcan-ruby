@@ -1,0 +1,48 @@
+require 'rake'
+require 'rake/testtask'
+require 'rake/rdoctask'
+
+task :default => [ :testall ]
+
+desc "Run the unit tests in test/unit"
+Rake::TestTask.new("testall") { |t|
+  t.libs << "test"
+  t.pattern = 'test/**/*_test.rb'
+  t.verbose = true
+}
+
+
+Rake::RDocTask.new { |rdoc|
+  rdoc.rdoc_dir = 'doc'
+  rdoc.title    = "CMock: Expectation-based mock object library " 
+  rdoc.options << '--line-numbers' << '--inline-source' << '-A cattr_accessor=object'
+  rdoc.rdoc_files.include('lib/**/*.rb')
+}
+
+desc "Create a release tar.gz file."
+task :release => :testall do
+	version = ENV['VERSION']
+	raise "Please specify VERSION" unless version
+
+	require 'fileutils'
+	include FileUtils::Verbose
+	proj_root = File.expand_path(File.dirname(__FILE__))
+	begin 
+		cd proj_root
+
+		sh 'svn up'
+		status = `svn status` 
+		raise "Please clean up before releasing.\n#{status}" unless status == ""
+
+		sh "svn cp . https://bear.atomicobject.com/svn/devtools/tags/cmock-#{version} -m 'Releasing version #{version}'"
+
+		rm_rf 'release'
+		mkdir 'release'
+		sh 'svn export . release/cmock'
+		cd 'release'
+		sh "tar cvzf ../cmock-#{version}.tar.gz cmock"
+	ensure
+		cd proj_root
+		rm_rf 'release'
+	end
+end
